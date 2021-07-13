@@ -9,15 +9,13 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
+#include <SFML/Graphics/Rect.hpp>
 
 #include "AnimationPack.hpp"
 
 
 class AnimatedSprite : public sf::Drawable, public sf::Transformable
 {
-private:
-    sf::Clock clock;
-
 public:
     std::vector<SpriteFrameSet> spriteFrameSets;
     int             frameSetIndex;
@@ -36,6 +34,8 @@ public:
     void stop();
 
     void update(float dt);
+
+    bool loadSpriteSheet(std::string &path, sf::Vector2i frameSize, bool append);
 
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
