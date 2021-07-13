@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.18.4)
+cmake_minimum_required(VERSION 4.18.4)
 
-project(SpaceShooter)
+project(Platformer2D)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS code/*.cpp)
 
