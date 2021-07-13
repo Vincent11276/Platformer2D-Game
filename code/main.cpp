@@ -1,8 +1,8 @@
 #include <iostream>
+using namespace std;
 
-#include "hello.hpp"
 
 int main()
 {
-    hello1();
+    return EXIT_SUCCESS;
 }
