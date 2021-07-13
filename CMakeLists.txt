@@ -7,7 +7,14 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS code/*.cpp)
 add_executable("${PROJECT_NAME}" ${SOURCES})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
-add_compile_options(-Wall -Wextra -pedantic -Og)
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+	add_compile_options(-Wall -Wextra -pedantic)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	add_compile_options(-Wall -Wextra -pedantic)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+	add_compile_options(/Wall)
+endif()
 
 include(FetchContent)
 
