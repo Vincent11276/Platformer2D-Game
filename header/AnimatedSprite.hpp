@@ -5,25 +5,38 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/Drawable.hpp>
+#include <SFML/System/Clock.hpp>
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Graphics/RenderStates.hpp>
 
-
-#include "Node.hpp"
-#include "SpriteFrames.hpp"
+#include "AnimationPack.hpp"
 
 
 class AnimatedSprite : public sf::Drawable, public sf::Transformable
 {
+private:
+    sf::Clock clock;
+
 public:
-    SpriteFrames    frames;
-    int             frameIndex;
+    std::vector<SpriteFrameSet> spriteFrameSets;
+    int             frameSetIndex;
     bool            playing;
     float           speedScale;
     bool            centered;
     
     AnimatedSprite();
 
-    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
-
     int getIndexByName(std::string name);
+
+    void play(int index=0);
+
+    void play(std::string name);
+
+    void stop();
+
+    void update(float dt);
+
+    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
 };
