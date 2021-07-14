@@ -1,6 +1,7 @@
 #include "Game.hpp"
 
 #include "Utility/Keyboard.hpp"
+#include "GameStates/DefaultState.hpp"
 
 #include <imgui.h>
 #include <imgui-SFML.h>
@@ -9,14 +10,14 @@ namespace zfge
 {
 
 Game::Game()
-	: m_window(sf::VideoMode(600, 600), "SpaceShooter")
+	: m_window(sf::VideoMode(800, 600), "Platformer2D")
 {
 	m_window.setKeyRepeatEnabled(false);
 	m_window.setFramerateLimit(60);
 
 	ImGui::SFML::Init(m_window);
 
-	// m_gameStateManager.push<MainMenu>(m_gameStateManager, m_window);
+	m_gameStateManager.push<DefaultState>(m_gameStateManager, m_window);
 }
 
 void Game::run()
