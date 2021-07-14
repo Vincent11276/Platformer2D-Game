@@ -3,11 +3,26 @@
 #include <vector>
 #include <string>
 
-#include "SpriteFrameSet.hpp"
+#include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+
+#include "Animation.hpp"
+
 
 
 class AnimationPack
 {
 public:
-    std::vector<SpriteFrameSet> frames;
+    std::vector<Animation> animations;
+    // Animation's index
+    int animationIndex = 0;
+
+    AnimationPack();
+
+    AnimationPack(AnimationPack &animPack);
+
+    int getIndexByName(std::string name);
+
+    bool loadSpriteSheet(std::string &path, sf::Vector2i frameSize, bool append=false);
 };

@@ -6,18 +6,22 @@
 #include <SFML/Graphics/Sprite.hpp>
 
 
-class SpriteFrameSet
+
+class Animation
 {
 public:
     std::vector<sf::Sprite> frames;
 
-    std::string name;
+                std::string name;
 
-    int index;
+                        int frameIndex;
 
-    float fps = 5.0f;
+                      float fps;
 
-    bool loop = true;
+                       bool loop;
+
+
+    void resetFrame();
 
     void nextFrame();
 

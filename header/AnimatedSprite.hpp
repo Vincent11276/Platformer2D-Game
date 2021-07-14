@@ -14,18 +14,17 @@
 #include "AnimationPack.hpp"
 
 
-class AnimatedSprite : public sf::Drawable, public sf::Transformable
+
+class AnimatedSprite : public sf::Drawable, public sf::Transformable, public AnimationPack
 {
 public:
-    std::vector<SpriteFrameSet> spriteFrameSets;
-    int             frameSetIndex;
     bool            playing;
     float           speedScale;
     bool            centered;
     
     AnimatedSprite();
 
-    int getIndexByName(std::string name);
+    AnimatedSprite(AnimationPack &anims);
 
     void play(int index=0);
 
@@ -34,8 +33,6 @@ public:
     void stop();
 
     void update(float dt);
-
-    bool loadSpriteSheet(std::string &path, sf::Vector2i frameSize, bool append);
 
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
