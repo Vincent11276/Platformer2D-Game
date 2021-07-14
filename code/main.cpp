@@ -40,7 +40,7 @@ int main()
         }
         window.clear();
 
-        //window.draw(animatedSprite);
+        window.draw(animatedSprite);
 
         window.display();
     }

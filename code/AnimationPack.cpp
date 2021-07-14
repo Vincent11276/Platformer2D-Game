@@ -3,19 +3,27 @@
 
 AnimationPack::AnimationPack()
 {
-
+    // default..
 }
 
-AnimationPack::AnimationPack(AnimationPack &animPack)
+
+Animation AnimationPack::getCurrentAnimation()
 {
-    
+    return animations[animationIndex];
 }
+
+
+Animation AnimationPack::getCurrentAnimation() const
+{
+    return animations[animationIndex];
+}
+
 
 int AnimationPack::getIndexByName(std::string name)
 {
     for (int i = 0; i < animations.size(); i++)
     {
-        if (animations[i].name == name) // errors gone!
+        if (animations[i].name == name)
         {
             return i;
         }
@@ -34,12 +42,12 @@ bool AnimationPack::loadSpriteSheet(std::string &path, sf::Vector2i frameSize, b
     {
         Animation newAnimation;
 
-        // for (int frameX = 0; frameX < texture.getSize().x / frameSize.x; frameX++)
-        // {
-        //     sf::Vector2i targetPosition(frameX * frameSize.x, frameY * frameSize.y);
+        for (int frameX = 0; frameX < texture.getSize().x / frameSize.x; frameX++)
+        {
+            sf::Vector2i targetPosition(frameX * frameSize.x, frameY * frameSize.y);
 
-        //     newAnimation.frames.push_back(sf::Sprite(texture, sf::IntRect(targetPosition, targetPosition + frameSize)));
-        // }
+            newAnimation.frames.push_back(sf::Sprite(texture, sf::IntRect(targetPosition, targetPosition + frameSize)));
+        }
         animations.push_back(newAnimation);
     }
     return true;

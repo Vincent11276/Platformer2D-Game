@@ -15,16 +15,17 @@
 
 
 
-class AnimatedSprite : public sf::Drawable, public sf::Transformable, public AnimationPack
+class AnimatedSprite : public sf::Drawable, public sf::Transformable
 {
 public:
+    AnimationPack   animationPack;
     bool            playing;
     float           speedScale;
     bool            centered;
     
     AnimatedSprite();
 
-    AnimatedSprite(AnimationPack &anims);
+    AnimatedSprite(AnimationPack &animPack);
 
     void play(int index=0);
 

@@ -1,6 +1,12 @@
 #include "Animation.hpp"
 
 
+
+sf::Sprite &Animation::getCurrentFrame()
+{
+    return frames[frameIndex];
+}
+
 void Animation::resetFrame()
 {
     frameIndex = 0;

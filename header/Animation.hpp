@@ -21,6 +21,8 @@ public:
                        bool loop;
 
 
+    sf::Sprite &getCurrentFrame();
+
     void resetFrame();
 
     void nextFrame();

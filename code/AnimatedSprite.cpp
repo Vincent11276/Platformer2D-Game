@@ -6,23 +6,24 @@ AnimatedSprite::AnimatedSprite()
     // Default..
 }
 
-AnimatedSprite::AnimatedSprite(AnimationPack &animPack) : AnimationPack{animPack}
-{
-    
-}
+
+AnimatedSprite::AnimatedSprite(AnimationPack &animPack)
+    : animationPack(animPack) { }
+
 
 void AnimatedSprite::play(int animIndex)
 {
-    animationIndex = animIndex;
+    animationPack.animationIndex = animIndex;
 
-    animations[animationIndex].resetFrame();
+    animationPack.animations[animIndex].resetFrame();
 
     playing = true;
 }
 
+
 void AnimatedSprite::play(std::string name)
 {
-    AnimatedSprite::play(AnimatedSprite::getIndexByName(name));
+    AnimatedSprite::play(animationPack.getIndexByName(name));
 }
 
 
@@ -30,6 +31,7 @@ void AnimatedSprite::stop()
 {
     playing = false;
 }
+
 
 void AnimatedSprite::update(float dt)
 {
@@ -42,9 +44,10 @@ void AnimatedSprite::update(float dt)
     }
 }
 
+
 void AnimatedSprite::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
 
-    target.draw(animations[animationIndex].frames[animations[animationIndex].frameIndex], states);
+    target.draw(animationPack.getCurrentAnimation().getCurrentFrame(), states);
 }

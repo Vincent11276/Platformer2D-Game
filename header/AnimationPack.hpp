@@ -15,12 +15,14 @@ class AnimationPack
 {
 public:
     std::vector<Animation> animations;
-    // Animation's index
+
     int animationIndex = 0;
 
     AnimationPack();
 
-    AnimationPack(AnimationPack &animPack);
+    Animation getCurrentAnimation();
+
+    Animation getCurrentAnimation() const;
 
     int getIndexByName(std::string name);
 
