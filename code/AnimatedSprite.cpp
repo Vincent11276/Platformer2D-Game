@@ -1,8 +1,6 @@
 #include "AnimatedSprite.hpp"
 
 
-
-
 int AnimatedSprite::getIndexByName(std::string name)
 {
     for (int i = 0; i < spriteFrameSets.size(); i++)
@@ -31,10 +29,10 @@ void AnimatedSprite::update(float dt)
 {
     if (playing)    
     {
-        if (clock.getElapsedTime().asSeconds() >= (1 / spriteFrameSets[frameSetIndex].fps))
-        {
-            spriteFrameSets[frameSetIndex].nextFrame();
-        }
+        // if (clock.getElapsedTime().asSeconds() >= (1 / spriteFrameSets[frameSetIndex].fps))
+        // {
+        //     spriteFrameSets[frameSetIndex].nextFrame();
+        // }
     }
 }
 
