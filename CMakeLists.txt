@@ -21,7 +21,16 @@ include(FetchContent)
 FetchContent_Declare(
 	sfml
 	URL https://github.com/SFML/SFML/archive/refs/tags/2.5.1.zip
-	)
+)
+
+FetchContent_Declare(
+	box2d
+	URL https://github.com/erincatto/box2d/archive/refs/tags/v2.4.1.zip
+)
+
+set(BOX2D_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(box2d)
 FetchContent_MakeAvailable(sfml)
 
 # Set to use C++17
@@ -43,4 +52,5 @@ target_link_libraries(
 	sfml-graphics
 	sfml-window
 	sfml-system
+	box2d
 	)
