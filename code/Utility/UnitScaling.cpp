@@ -6,7 +6,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/Vertex.hpp>
 
-namespace astro
+namespace zfge
 {
 	constexpr float PPM = 48.f;
 

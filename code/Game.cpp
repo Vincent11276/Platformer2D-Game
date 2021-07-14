@@ -5,7 +5,7 @@
 #include <imgui.h>
 #include <imgui-SFML.h>
 
-namespace astro
+namespace zfge
 {
 
 Game::Game()

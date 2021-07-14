@@ -1,6 +1,6 @@
 #include "Utility/Keyboard.hpp"
 
-namespace astro
+namespace zfge
 {
 
 std::array<bool, static_cast<std::size_t>(sf::Keyboard::KeyCount)> Keyboard::m_states {};

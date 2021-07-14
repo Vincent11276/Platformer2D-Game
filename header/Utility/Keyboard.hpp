@@ -4,7 +4,7 @@
 
 #include <array>
 
-namespace astro
+namespace zfge
 {
 
 class Keyboard

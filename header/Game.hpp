@@ -2,7 +2,7 @@
 
 #include "GameStateManager.hpp"
 
-namespace astro
+namespace zfge
 {
 
 class Game

@@ -4,7 +4,7 @@
 #include <SFML/Graphics/View.hpp>
 #include <SFML/System/Vector2.hpp>
 
-namespace astro
+namespace zfge
 {
 
 class CoordinateSpaceMapper
