@@ -1,10 +1,9 @@
 #pragma once
 
-#include <vector>
-#include <string>
-
 #include "SpriteFrameSet.hpp"
 
+#include <vector>
+#include <string>
 
 class AnimationPack
 {

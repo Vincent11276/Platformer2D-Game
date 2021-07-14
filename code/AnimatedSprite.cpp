@@ -1,6 +1,5 @@
 #include "AnimatedSprite.hpp"
 
-
 int AnimatedSprite::getIndexByName(std::string name)
 {
     for (int i = 0; i < spriteFrameSets.size(); i++)
@@ -27,7 +26,7 @@ void AnimatedSprite::play(std::string name)
 
 void AnimatedSprite::update(float dt)
 {
-    if (playing)    
+    if (playing)
     {
         // if (clock.getElapsedTime().asSeconds() >= (1 / spriteFrameSets[frameSetIndex].fps))
         // {
@@ -41,7 +40,7 @@ bool AnimatedSprite::loadSpriteSheet(std::string &path, sf::Vector2i frameSize, 
     sf::Texture texture;
     if (!texture.loadFromFile(path))
         return false;
-        
+
     for (int frameY = 0; frameY < texture.getSize().y / frameSize.y; frameY++)
     {
         SpriteFrameSet newSpriteFrameSet;
