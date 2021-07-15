@@ -22,6 +22,7 @@ int main()
         return EXIT_FAILURE;
 
 
+
     // AnimationPack animationPack;
     // if (!animationPack.loadSpriteSheet(texture, sf::Vector2i(32, 32)))
     //     return EXIT_FAILURE;
