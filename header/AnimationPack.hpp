@@ -10,7 +10,7 @@
 
 
 
-class AnimationPack
+class AnimationPack : std::vector<Animation>
 {
 public:
     std::vector<Animation> animations;
@@ -19,9 +19,9 @@ public:
 
     AnimationPack();
 
-    Animation getCurrentAnimation();
+    Animation &getCurrentAnimation();
 
-    Animation getCurrentAnimation() const;
+    const Animation &getCurrentAnimation() const;
 
     int getIndexByName(std::string name);
 };

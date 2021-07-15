@@ -32,5 +32,5 @@ public:
 
     void previousFrame();
 
-    bool loadSpriteSheet(std::string name, sf::Texture &texture, sf::Vector2i frameSize, bool append=0, int row=0);
+    bool loadSpriteSheet(std::string name, sf::Texture &texture, sf::Vector2i frameSize, int frameCount, bool append=0, int row=0);
 };

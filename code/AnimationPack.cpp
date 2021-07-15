@@ -7,13 +7,13 @@ AnimationPack::AnimationPack()
 }
 
 
-Animation AnimationPack::getCurrentAnimation()
+Animation &AnimationPack::getCurrentAnimation()
 {
     return animations[animationIndex];
 }
 
 
-Animation AnimationPack::getCurrentAnimation() const
+const Animation &AnimationPack::getCurrentAnimation() const
 {
     return animations[animationIndex];
 }

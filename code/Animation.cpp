@@ -26,9 +26,9 @@ void Animation::previousFrame()
     else frameIndex--;
 }
 
-bool Animation::loadSpriteSheet(std::string name, sf::Texture &texture, sf::Vector2i frameSize, bool append, int row)
+bool Animation::loadSpriteSheet(std::string name, sf::Texture &texture, sf::Vector2i frameSize, int frameCount, bool append, int row)
 {    
-    for (int column = 0; column < texture.getSize().x / frameSize.x; column++)
+    for (int column = 0; column < frameCount; column++)
     {
         sf::Vector2i targetPosition(column * frameSize.x, row * frameSize.y);
 
