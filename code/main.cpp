@@ -10,29 +10,24 @@ using namespace std;
 
 int main()
 {
-    std::string spriteSheetPath = "C:\\Users\\Vincent\\Documents\\GitHub\\Platformer2D-Game\\.vscode\\Assets\\Arts\\Intellect Devourer Sprites.png";
+    std::string spriteSheetPath = "C:\\Users\\Vincent\\Documents\\GitHub\\Platformer2D-Game\\assets\\Intellect Devourer Sprites.png";
 
     sf::Texture texture;
     if (!texture.loadFromFile(spriteSheetPath))
         return EXIT_FAILURE;
 
-
     Animation animation;
     if (!animation.loadSpriteSheet("idle", texture, sf::Vector2i(32, 32)))
         return EXIT_FAILURE;
 
+    AnimationPack animationPack;
+    animationPack.animations.push_back(animation);
 
-
-    // AnimationPack animationPack;
-    // if (!animationPack.loadSpriteSheet(texture, sf::Vector2i(32, 32)))
-    //     return EXIT_FAILURE;
-
-    // AnimatedSprite animatedSprite(animationPack);
-    // animatedSprite.play(0);
+    AnimatedSprite animatedSprite(animationPack);
+    animatedSprite.play(0);
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Animated Sprite Demo.");
     window.setVerticalSyncEnabled(true);
-
 
     while (window.isOpen())
     {
@@ -48,9 +43,11 @@ int main()
                     break;
             }
         }
+        animatedSprite.update();
+
         window.clear();
 
-        window.draw(animation.frames[1]);
+        window.draw(animatedSprite);
 
         window.display();
     }

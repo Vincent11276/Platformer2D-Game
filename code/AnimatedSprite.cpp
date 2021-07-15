@@ -52,6 +52,4 @@ void AnimatedSprite::draw(sf::RenderTarget &target, sf::RenderStates states) con
     states.transform *= getTransform();
 
     target.draw(animationPack.getCurrentAnimation().getCurrentFrame(), states);
-
-    std::cout << animationPack.getCurrentAnimation().frameIndex << std::endl;
 }

@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <string>
+#include <iostream> // fuck
+using namespace std;
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
@@ -13,13 +15,13 @@ class Animation
 public:
     std::vector<sf::Sprite> frames;
 
-                std::string name;
+    std::string name;
 
-                        int frameIndex;
+    int frameIndex=0;
 
-                      float fps = 5;
+    float fps = 5;
 
-                       bool loop;
+    bool loop;
 
 
     sf::Sprite &getCurrentFrame();
