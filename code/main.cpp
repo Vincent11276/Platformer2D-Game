@@ -12,13 +12,22 @@ int main()
 {
     std::string spriteSheetPath = "C:\\Users\\Vincent\\Documents\\GitHub\\Platformer2D-Game\\.vscode\\Assets\\Arts\\Intellect Devourer Sprites.png";
 
-
-    AnimationPack animationPack;
-    if (!animationPack.loadSpriteSheet(spriteSheetPath, sf::Vector2i(32, 32)))
+    sf::Texture texture;
+    if (!texture.loadFromFile(spriteSheetPath))
         return EXIT_FAILURE;
 
-    AnimatedSprite animatedSprite(animationPack);
-    animatedSprite.play(0);
+
+    Animation animation;
+    if (!animation.loadSpriteSheet("idle", texture, sf::Vector2i(32, 32)))
+        return EXIT_FAILURE;
+
+
+    // AnimationPack animationPack;
+    // if (!animationPack.loadSpriteSheet(texture, sf::Vector2i(32, 32)))
+    //     return EXIT_FAILURE;
+
+    // AnimatedSprite animatedSprite(animationPack);
+    // animatedSprite.play(0);
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Animated Sprite Demo.");
     window.setVerticalSyncEnabled(true);
@@ -40,7 +49,7 @@ int main()
         }
         window.clear();
 
-        window.draw(animatedSprite);
+        window.draw(animation.frames[1]);
 
         window.display();
     }

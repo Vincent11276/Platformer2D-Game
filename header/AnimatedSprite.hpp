@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream> // temporary
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Transformable.hpp>
@@ -17,10 +18,12 @@
 
 class AnimatedSprite : public sf::Drawable, public sf::Transformable
 {
+private:
+    sf::Clock       clock;
 public:
     AnimationPack   animationPack;
     bool            playing;
-    float           speedScale;
+    float           speedScale = 1;
     bool            centered;
     
     AnimatedSprite();
@@ -33,7 +36,7 @@ public:
 
     void stop();
 
-    void update(float dt);
+    void update();
 
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 

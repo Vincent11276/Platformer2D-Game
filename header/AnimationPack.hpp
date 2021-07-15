@@ -4,7 +4,6 @@
 #include <string>
 
 #include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 
 #include "Animation.hpp"
@@ -25,6 +24,4 @@ public:
     Animation getCurrentAnimation() const;
 
     int getIndexByName(std::string name);
-
-    bool loadSpriteSheet(std::string &path, sf::Vector2i frameSize, bool append=false);
 };

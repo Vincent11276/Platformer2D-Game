@@ -4,6 +4,7 @@
 #include <string>
 
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Texture.hpp>
 
 
 
@@ -16,7 +17,7 @@ public:
 
                         int frameIndex;
 
-                      float fps;
+                      float fps = 5;
 
                        bool loop;
 
@@ -28,4 +29,6 @@ public:
     void nextFrame();
 
     void previousFrame();
+
+    bool loadSpriteSheet(std::string name, sf::Texture &texture, sf::Vector2i frameSize, bool append=0, int row=0);
 };

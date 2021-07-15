@@ -19,7 +19,6 @@ void Animation::nextFrame()
         frameIndex = 0;
     }
     else frameIndex++;
-    
 }
 
 void Animation::previousFrame()
@@ -31,3 +30,13 @@ void Animation::previousFrame()
     else frameIndex--;
 }
 
+bool Animation::loadSpriteSheet(std::string name, sf::Texture &texture, sf::Vector2i frameSize, bool append, int row)
+{    
+    for (int column = 0; column < texture.getSize().x / frameSize.x; column++)
+    {
+        sf::Vector2i targetPosition(row * frameSize.x, column * frameSize.y);
+
+        frames.push_back(sf::Sprite(texture, sf::IntRect(targetPosition, targetPosition + frameSize)));
+    }
+    return true;
+}

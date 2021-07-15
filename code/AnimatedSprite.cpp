@@ -33,14 +33,16 @@ void AnimatedSprite::stop()
 }
 
 
-void AnimatedSprite::update(float dt)
+void AnimatedSprite::update()
 {
     if (playing)    
     {
-        // if (clock.getElapsedTime().asSeconds() >= (1 / (spriteFrameSets[frameSetIndex].fps * speedScale)))
-        // {
-        //     spriteFrameSets[frameSetIndex].nextFrame();
-        // }
+        if (clock.getElapsedTime().asSeconds() >= (1 / (animationPack.getCurrentAnimation().fps * speedScale)))
+        {
+            animationPack.getCurrentAnimation().nextFrame();
+
+            clock.restart();
+        }
     }
 }
 
@@ -50,4 +52,6 @@ void AnimatedSprite::draw(sf::RenderTarget &target, sf::RenderStates states) con
     states.transform *= getTransform();
 
     target.draw(animationPack.getCurrentAnimation().getCurrentFrame(), states);
+
+    std::cout << animationPack.getCurrentAnimation().frameIndex << std::endl;
 }
