@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <string>
-
+#include <unordered_map>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 
@@ -10,18 +10,10 @@
 
 
 
-class AnimationPack : std::vector<Animation>
+class AnimationPack : public std::unordered_map<std::string, Animation>
 {
 public:
-    std::vector<Animation> animations;
-
-    int animationIndex = 0;
+    void addAnimation(std::string name, Animation animation);
 
     AnimationPack();
-
-    Animation &getCurrentAnimation();
-
-    const Animation &getCurrentAnimation() const;
-
-    int getIndexByName(std::string name);
 };

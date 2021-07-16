@@ -2,13 +2,13 @@
 #include <string>
 #include <vector>
 
+
 using namespace std;
 
 
 #include <SFML/Graphics.hpp>
 
 #include "AnimatedSprite.hpp"
-
 
 
 int main()
@@ -19,20 +19,19 @@ int main()
     if (!texture.loadFromFile(spriteSheetPath))
         return EXIT_FAILURE;
 
-    Animation animation;
-    if (!animation.loadSpriteSheet("idle", texture, sf::Vector2i(32, 32), 4))
+    Animation idleAnimation;
+    idleAnimation.fps = 12;
+    if (!idleAnimation.loadSpriteSheet(texture, sf::Vector2i(32, 32), 8, false, 1))
         return EXIT_FAILURE;
 
-    AnimationPack animationPack;
-    animationPack.animations.push_back(animation);
+    AnimatedSprite animatedSprite;
+    animatedSprite.addAnimation("idle", idleAnimation);
 
-    AnimatedSprite animatedSprite(animationPack);
-    animatedSprite.scale(sf::Vector2f(5, 5));
-    animatedSprite.play(0);
+    animatedSprite.scale(sf::Vector2f(10, 10));
+    animatedSprite.play("idle");
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Animated Sprite Demo.");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Animated Sprite Demo");
     window.setVerticalSyncEnabled(true);
-
 
     sf::Font bigSpaceFont;
     if (!bigSpaceFont.loadFromFile("C:\\Users\\Vincent\\Documents\\GitHub\\Platformer2D-Game\\assets\\Fonts\\big-space-font\\BigSpace-rPKx.ttf"))
@@ -44,7 +43,7 @@ int main()
 
     sf::Clock clock;
 
-    while (window.isOpen())
+    while (window.isOpen()) 
     {
         float delta = clock.restart().asMicroseconds();
 

@@ -11,46 +11,70 @@ AnimatedSprite::AnimatedSprite(AnimationPack &animPack)
     : animationPack(animPack) { }
 
 
-void AnimatedSprite::play(int animIndex)
+void AnimatedSprite::addAnimation(std::string p_name, Animation &p_animation)
 {
-    animationPack.animationIndex = animIndex;
+    animationPack.insert(std::make_pair(p_name, p_animation));
+}
 
-    animationPack.animations[animIndex].resetFrame();
+void AnimatedSprite::play(std::string p_animation)
+{
+    if (resetFrameEverytimeYouPlay) 
+        resetFrame();
 
+    animation = p_animation;
     playing = true;
 }
-
-
-void AnimatedSprite::play(std::string name)
-{
-    AnimatedSprite::play(animationPack.getIndexByName(name));
-}
-
 
 void AnimatedSprite::stop()
 {
     playing = false;
 }
 
+void AnimatedSprite::resetFrame()
+{
+    frame = 0;
+}
+
+void AnimatedSprite::nextFrame()
+{
+    frame = (frame + 1) % getFrameCount(animation);
+}
+
+void AnimatedSprite::previousFrame()
+{
+    if (frame == 0)
+    {
+        frame = getFrameCount(animation) - 1;
+    }
+    else frame--;
+}
+
+int AnimatedSprite::getFrameCount(std::string &p_animation)
+{
+    return animationPack[p_animation].frames.size();
+}
 
 void AnimatedSprite::update()
 {
     if (playing)    
     {
-        if (clock.getElapsedTime().asSeconds() >= (1 / (animationPack.getCurrentAnimation().fps * speedScale)))
+        if (clock.getElapsedTime().asSeconds() >= (1 / (animationPack[animation].fps * speedScale)))
         {
-            animationPack.getCurrentAnimation().nextFrame();
+            nextFrame();
 
             clock.restart();
         }
     }
 }
 
+const Animation &AnimatedSprite::getCurrentAnimation() const
+{
+    return animationPack.at(animation);
+}
 
 void AnimatedSprite::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
 
-
-    target.draw(animationPack.animations[animationPack.animationIndex].frames[animationPack.animations[animationPack.animationIndex].frameIndex], states);
+    target.draw(getCurrentAnimation().frames[frame], states);
 }

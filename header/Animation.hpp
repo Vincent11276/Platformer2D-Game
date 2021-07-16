@@ -15,22 +15,13 @@ class Animation
 public:
     std::vector<sf::Sprite> frames;
 
-    std::string name;
+    float fps   = 5;
 
-    int frameIndex=0;
-
-    float fps = 5;
-
-    bool loop;
+    bool loop   = true;
 
 
     sf::Sprite &getCurrentFrame();
 
-    void resetFrame();
 
-    void nextFrame();
-
-    void previousFrame();
-
-    bool loadSpriteSheet(std::string name, sf::Texture &texture, sf::Vector2i frameSize, int frameCount, bool append=0, int row=0);
+    bool loadSpriteSheet(sf::Texture &texture, sf::Vector2i frameSize, int frameCount, bool append=0, int row=0);
 };
