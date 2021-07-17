@@ -2,7 +2,8 @@
 
 #include <cstddef>
 
-class b2Vec2;
+struct b2Vec2;
+
 namespace sf
 { 
 	class Vertex;
